@@ -39,7 +39,15 @@ public class MyResource
 {
     @GET
     @Produces("text/plain")
-    public String get() throws Exception
+    public String init() throws Exception
+    {
+	return "Active";
+    }
+
+    @Path("begincommit")
+    @GET
+    @Produces("text/plain")
+    public String beginCommit() throws Exception
     {
 	UserTransaction txn = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
 	String value = "Transaction ";
@@ -64,6 +72,73 @@ public class MyResource
 	catch (final Throwable ex)
 	{
 	    value += "failed to begin: "+ex.toString();
+        }
+
+        return value;
+    }
+
+    @Path("beginrollback")
+    @GET
+    @Produces("text/plain")
+    public String beginRollback() throws Exception
+    {
+	UserTransaction txn = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
+	String value = "Transaction ";
+
+	try
+	{
+	    txn.begin();
+
+	    value += "begun ok";
+
+	    try
+	    {
+		txn.rollback();
+
+		value += " and rolled back ok";
+	    }
+	    catch (final Throwable ex)
+	    {
+		value += " but failed to rollback "+ex.toString();
+	    }
+	}
+	catch (final Throwable ex)
+	{
+	    value += "failed to begin: "+ex.toString();
+        }
+
+        return value;
+    }
+
+    @Path("nested")
+    @GET
+    @Produces("text/plain")
+    public String nested() throws Exception
+    {
+	UserTransaction txn = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
+	String value = "Nested transaction ";
+
+	try
+	{
+	    txn.begin();
+	    txn.begin();
+
+	    value += "support appears to be enabled!";
+
+	    try
+	    {
+		txn.commit();
+		txn.commit();
+	    }
+	    catch (final Throwable ex)
+	    {
+	    }
+	}
+	catch (final Throwable ex)
+	{
+	    value += "support is not enabled!";
+
+	    txn.commit(); // laziness but should have a try/catch here too
         }
 
         return value;
