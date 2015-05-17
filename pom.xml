@@ -77,6 +77,12 @@
 	<artifactId>jta</artifactId>
 	<version>1.1</version>
       </dependency>
+      <dependency>
+	<groupId>org.jboss.narayana.arjunacore</groupId>
+	<artifactId>arjunacore</artifactId>
+	<version>5.1.1.Final</version>
+	<scope>provided</scope>
+        </dependency>
         <dependency>
           <groupId>org.wildfly.swarm</groupId>
           <artifactId>wildfly-swarm-jaxrs</artifactId>
