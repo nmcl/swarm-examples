@@ -3,6 +3,8 @@
 This example uses a JAX-RS resource and UserTransaction to start
 and end transactions.
 
+Note, this has now been folded into the official WildFly-Swarm repository maintained at https://github.com/wildfly-swarm
+
 ## Project `pom.xml`
 
 The project is a normal maven project with `jar` packaging, not `war`.
