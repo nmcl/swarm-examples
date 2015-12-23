@@ -30,8 +30,6 @@ import javax.transaction.UserTransaction;
 
 import javax.naming.InitialContext;
 
-import com.arjuna.ats.arjuna.AtomicAction;
-
 /**
  * @author nmcl
  */
@@ -43,16 +41,6 @@ public class MyResource
     @Produces("text/plain")
     public String init() throws Exception
     {
-	return "Active";
-    }
-
-    @Path("aa")
-	@GET
-    @Produces("text/plain")
-    public String aa() throws Exception  // dummy method name for now
-    {
-	AtomicAction A = new AtomicAction();
-
 	return "Active";
     }
 
