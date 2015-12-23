@@ -80,7 +80,33 @@ To define the needed parts of WildFly Swarm, a dependency is added
 ## Use
 
     http://localhost:8080/
+    
+The browser will print the message ...
 
-On the console the MSC service will print the message ...
+    Active
 
-   Transaction begun ok and committed ok
+Then try
+
+    http://localhost:8080/begincommit
+
+The browser output should be ...
+
+    Transaction begun ok and committed ok
+
+Next
+
+    http://localhost:8080/beginrollback
+
+And we'll see ...
+
+    Transaction begun ok and rolled back ok
+
+Finally try
+
+    http://localhost:8080/nested
+
+And you'll see ...
+
+    Nested transaction support is not enabled!
+
+Of course if you've enabled nested transactions in JTA on WildFly then you'll see something different!
