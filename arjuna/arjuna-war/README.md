@@ -6,12 +6,12 @@ Note, these are not Java EE compliant APIs and classes we're going to use. But t
 
 ## Project `pom.xml`
 
-The project is a normal maven project with `jar` packaging, not `war`.
+The project is a normal maven project with `war` packaging, not `jar`.
 
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
 The project adds a `<plugin>` to configure `wildfly-swarm-plugin` to
-create the runnable `.jar`.
+create the `.war`.
 
     <plugin>
       <groupId>org.wildfly.swarm</groupId>
@@ -27,21 +27,15 @@ create the runnable `.jar`.
       </executions>
     </plugin>
 
-Additionally, the usual `maven-jar-plugin` is provided configuration
-to indicate which of our own classes should be used for the `main()`
-method.
+Additionally, the usual `maven-war-plugin` is provided.
 
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-            <archive>
-                <manifest>
-                    <mainClass>org.wildfly.swarm.examples.transactions.Main</mainClass>
-                </manifest>
-            </archive>
-        </configuration>
-    </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+		<configuration>
+		  <failOnMissingWebXml>false</failOnMissingWebXml>
+		</configuration>
+            </plugin>
 
 Currently we have to add javax.transactions into the pom.xml for building due to
 https://github.com/wildfly-swarm/wildfly-swarm/issues/27
@@ -73,8 +67,7 @@ To define the needed parts of WildFly Swarm, a dependency is added
 
 ## Run
 
-    java -jar ./target/wildfly-swarm-example-arjuna-1.0.0.Beta1-SNAPSHOT-swarm.jar
-
+   mvn wildfly-swarm:run
 
 ## Use
 
