@@ -53,10 +53,10 @@ public class MyResource
 	return "Active";
     }
 
-    @Path("aa")
+    @Path("atomicaction")
 	@GET
     @Produces("text/plain")
-    public String aa() throws Exception  // dummy method name for now
+    public String atomicaction() throws Exception  // dummy method name for now
     {
 	try
 	{
@@ -71,7 +71,7 @@ public class MyResource
 				@Override
 				    public void check(boolean isCommit, Uid actUid,
 						      Hashtable list) {
-				    System.out.println("MyEJB::check called");
+				    System.out.println("MyResource::check called");
 				}
 			    };
 			}
