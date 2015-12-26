@@ -58,21 +58,20 @@ public class MyResource
 
 	Container<Sample> theContainer = new Container<Sample>("Demo", Container.TYPE.PERSISTENT, Container.MODEL.SHARED);
 	Sample obj1 = theContainer.create(new SampleLockable(10));
-
-	System.out.println("Object name: "+theContainer.getIdentifier(obj1));
+	String str = "Object name: "+theContainer.getIdentifier(obj1)+"\n";
 
 	for (int i = 0; i < 10; i++) {
 	    AtomicAction A = new AtomicAction();
 
 	    A.begin();
+
 	    obj1.increment();
 
-	    String str = "hello" + obj1.value() + "\n";
-            System.out.println("Transaction value "+str);
+	    str += "Transaction value hello" + obj1.value() + "\n";
 
 	    A.commit();
 	}
 
-	return "done";
+	return str;
     }
 }
