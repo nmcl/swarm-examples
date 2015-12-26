@@ -77,27 +77,29 @@ To define the needed parts of WildFly Swarm, a dependency is added
 
     In the browser you should see something like ...
 
-2015-12-26 21:00:32,509 INFO  [stdout] (default task-1) Transaction value hello11
+Object name: 0:ffffac1c8001:a3d6627:567f024a:b
 
-2015-12-26 21:00:32,519 INFO  [stdout] (default task-1) Transaction value hello12
+Transaction value hello11
 
-2015-12-26 21:00:32,526 INFO  [stdout] (default task-1) Transaction value hello13
+Transaction value hello12
 
-2015-12-26 21:00:32,536 INFO  [stdout] (default task-1) Transaction value hello14
+Transaction value hello13
 
-2015-12-26 21:00:32,543 INFO  [stdout] (default task-1) Transaction value hello15
+Transaction value hello14
 
-2015-12-26 21:00:32,549 INFO  [stdout] (default task-1) Transaction value hello16
+Transaction value hello15
 
-2015-12-26 21:00:32,555 INFO  [stdout] (default task-1) Transaction value hello17
+Transaction value hello16
 
-2015-12-26 21:00:32,561 INFO  [stdout] (default task-1) Transaction value hello18
+Transaction value hello17
 
-2015-12-26 21:00:32,566 INFO  [stdout] (default task-1) Transaction value hello19
+Transaction value hello18
 
-2015-12-26 21:00:32,572 INFO  [stdout] (default task-1) Transaction value hello20
+Transaction value hello19
 
-Note that depending upon which version of Narayana STM you're using, you may see some warnings like this ...
+Transaction value hello20
+
+Note that depending upon which version of Narayana STM you're using, you may see some warnings like the following in the console ...
 
 2015-12-26 21:00:32,498 WARN  [com.arjuna.ats.arjuna] (default task-1) ARJUNA012281: ShadowingStore::read_state() - no type name given for object state 0:ffffac1c8001:-62da914f:567effe8:b
 
