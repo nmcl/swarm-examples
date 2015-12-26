@@ -73,34 +73,25 @@ To define the needed parts of WildFly Swarm, a dependency is added
 
     First try ...
 
-    http://localhost:8080/atomicaction
+    http://localhost:8080/stm
 
     In the browser you should see something like ...
 
-    Begin BasicAction: 0:ffffac1c8001:2fb05ec4:567ed3a5:b status: ActionStatus.RUNNING
-    Committed BasicAction: 0:ffffac1c8001:2fb05ec4:567ed3a5:b status: ActionStatus.COMMITTED
+2015-12-26 21:00:32,509 INFO  [stdout] (default task-1) Transaction value hello11
+2015-12-26 21:00:32,519 INFO  [stdout] (default task-1) Transaction value hello12
+2015-12-26 21:00:32,526 INFO  [stdout] (default task-1) Transaction value hello13
+2015-12-26 21:00:32,536 INFO  [stdout] (default task-1) Transaction value hello14
+2015-12-26 21:00:32,543 INFO  [stdout] (default task-1) Transaction value hello15
+2015-12-26 21:00:32,549 INFO  [stdout] (default task-1) Transaction value hello16
+2015-12-26 21:00:32,555 INFO  [stdout] (default task-1) Transaction value hello17
+2015-12-26 21:00:32,561 INFO  [stdout] (default task-1) Transaction value hello18
+2015-12-26 21:00:32,566 INFO  [stdout] (default task-1) Transaction value hello19
+2015-12-26 21:00:32,572 INFO  [stdout] (default task-1) Transaction value hello20
 
-    Then try ...
+Note that depending upon which version of Narayana STM you're using, you may see some warnings like this ...
 
-    http://localhost:8080/begincommit
+2015-12-26 21:00:32,498 WARN  [com.arjuna.ats.arjuna] (default task-1) ARJUNA012281: ShadowingStore::read_state() - no type name given for object state 0:ffffac1c8001:-62da914f:567effe8:b
 
-    Should result in ...
+You can safely ignore them as they're due to a known issue in some versions of Narayana ...
 
-    Transaction begun ok and committed ok
-
-    Next ...
-
-    http://localhost:8080/beginrollback
-
-    Should give you the following in the browser ...
-
-    Transaction begun ok and committed ok
-    
-    Now try ...
-
-    http://localhost:8080/beginrollback
-
-    You should get something like the following in your browser ...
-
-    Nested transaction  BasicAction: 0:ffffac1c8001:-315e47ea:567ed60e:19 status: ActionStatus.RUNNING started!
-    
+https://issues.jboss.org/browse/JBTM-2592
