@@ -102,7 +102,7 @@ public class MyResource
     @Produces("text/plain")
     public String beginCommit() throws Exception
     {
-	UserTransaction txn = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
+	AtomicAction txn = new AtomicAction();
 	String value = "Transaction ";
 
 	try
@@ -135,7 +135,7 @@ public class MyResource
     @Produces("text/plain")
     public String beginRollback() throws Exception
     {
-	UserTransaction txn = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
+	AtomicAction txn = new AtomicAction();
 	String value = "Transaction ";
 
 	try
@@ -146,7 +146,7 @@ public class MyResource
 
 	    try
 	    {
-		txn.rollback();
+		txn.abort();
 
 		value += " and rolled back ok";
 	    }
@@ -168,19 +168,22 @@ public class MyResource
     @Produces("text/plain")
     public String nested() throws Exception
     {
-	UserTransaction txn = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
+	AtomicAction txn = new AtomicAction();
 	String value = "Nested transaction ";
 
 	try
 	{
 	    txn.begin();
-	    txn.begin();
 
-	    value += "support appears to be enabled!";
+	    AtomicAction txn2 = new AtomicAction();
+
+	    txn2.begin();
+
+	    value += " " + txn2+" started!";
 
 	    try
 	    {
-		txn.commit();
+		txn2.commit();
 		txn.commit();
 	    }
 	    catch (final Throwable ex)
@@ -189,7 +192,7 @@ public class MyResource
 	}
 	catch (final Throwable ex)
 	{
-	    value += "support is not enabled!";
+	    value += "failed!";
 
 	    txn.commit(); // laziness but should have a try/catch here too
         }

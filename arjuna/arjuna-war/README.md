@@ -71,9 +71,36 @@ To define the needed parts of WildFly Swarm, a dependency is added
 
 ## Use
 
+    First try ...
+
     http://localhost:8080/atomicaction
 
     In the browser you should see something like ...
 
     Begin BasicAction: 0:ffffac1c8001:2fb05ec4:567ed3a5:b status: ActionStatus.RUNNING
     Committed BasicAction: 0:ffffac1c8001:2fb05ec4:567ed3a5:b status: ActionStatus.COMMITTED
+
+    Then try ...
+
+    http://localhost:8080/begincommit
+
+    Should result in ...
+
+    Transaction begun ok and committed ok
+
+    Next ...
+
+    http://localhost:8080/beginrollback
+
+    Should give you the following in the browser ...
+
+    Transaction begun ok and committed ok
+    
+    Now try ...
+
+    http://localhost:8080/beginrollback
+
+    You should get something like the following in your browser ...
+
+    Nested transaction  BasicAction: 0:ffffac1c8001:-315e47ea:567ed60e:19 status: ActionStatus.RUNNING started!
+    
