@@ -58,6 +58,8 @@ public class MyResource
     @Produces("text/plain")
     public String atomicaction() throws Exception  // dummy method name for now
     {
+	String value = "problem!";
+
 	try
 	{
 	    arjPropertyManager.getCoordinatorEnvironmentBean()
@@ -81,18 +83,18 @@ public class MyResource
 
 	    A.begin();
 
-	    System.out.println("Begin "+A);
+	    value = "Begin "+A;
 
 	    A.commit();
 
-	    System.out.println("Committed "+A);
+	    value += "\nCommitted "+A;
 	}
 	catch (final Throwable x)
 	{
-	    x.printStackTrace();
+	    value += x;
 	}
 
-	return "Active! Yeah!";
+	return value;
     }
 
     @Path("begincommit")

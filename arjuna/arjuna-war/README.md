@@ -71,8 +71,9 @@ To define the needed parts of WildFly Swarm, a dependency is added
 
 ## Use
 
-    http://localhost:8080/
+    http://localhost:8080/atomicaction
 
-On the console the MSC service will print the message ...
+    In the browser you should see something like ...
 
-   Transaction begun ok and committed ok
+    Begin BasicAction: 0:ffffac1c8001:2fb05ec4:567ed3a5:b status: ActionStatus.RUNNING
+    Committed BasicAction: 0:ffffac1c8001:2fb05ec4:567ed3a5:b status: ActionStatus.COMMITTED
