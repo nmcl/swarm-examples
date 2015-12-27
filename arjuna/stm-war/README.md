@@ -1,6 +1,6 @@
 # JAX-RS & Arjuna Transactions
 
-This example uses a JAX-RS resource and AtomicAction & friends.
+This example uses a JAX-RS resource and the Software Transactional Memory implementation of Narayana. This is a non-distributed transaction example.
 
 Note, these are not Java EE compliant APIs and classes we're going to use. But that's the point!
 
