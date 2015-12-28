@@ -2,7 +2,7 @@
 
 This example uses a JAX-RS resource and the Software Transactional Memory implementation of Narayana. This is a non-distributed transaction example.
 
-Note, these are not Java EE compliant APIs and classes we're going to use. But that's the point!
+Note, these are not Java EE compliant APIs and classes we're going to use. But that's the point! If you want to see documentation on STM then check out the Narayana web site or http://narayana.io/docs/project/index.html#d0e16062
 
 ## Project `pom.xml`
 
