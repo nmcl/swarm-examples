@@ -1,4 +1,4 @@
-# JAX-RS & Arjuna Transactions
+# JAX-RS & Arjuna Software Transactional Memory
 
 This example uses a JAX-RS resource and the Software Transactional Memory implementation of Narayana. This is a non-distributed transaction example.
 
